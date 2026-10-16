@@ -33,15 +33,15 @@ def get_world_capitals_dictionary(filename):
 def get_player_answer(target_country, cities):
     print(f"Choices available: {cities}")
     print()
-    user_input = input(f"Enter the captital city of {target_country} : {cities}")
+    user_input = input(f"What is the capital city of {target_country}? ")
     while user_input not in cities:
         print("You must choose from the city choices available!")
-        user_input = input(f"Enter the captital city of {target_country} : {cities}")
+        user_input = input(f"What is the capital city of {target_country}? ")
     return user_input
 
 #To complete
 def run_round(world_capitals_dict, countries_tested):
-    question_data = get_question_data(world_capitals_dict, countries_tested);
+    question_data = get_question_data(world_capitals_dict, countries_tested)
     correct_country = question_data[0]
     city_options = question_data[1]
     correct_city = world_capitals_dict[correct_country]
@@ -63,7 +63,14 @@ def run_quiz(world_capitals_dict):
     countries_tested = []
     score  = 0
 
-    score += run_round(world_capitals_dict, countries_tested)
+    for i in range(1,7) :
+            print()
+            print(f"Round {i}")
+            print()
+
+            score += run_round(world_capitals_dict, countries_tested)
+            print(countries_tested)
+
     return score
 
 #To complete
