@@ -5,39 +5,41 @@ def main():
     output_filename = "HighScores.txt" #Do not update
     username = "wxyz001" #use your username
     #To complete
-    
-        
+    print_banner(username)
+    world_capitals_dict = get_world_capitals_dictionary("WorldCapitals.txt")
     print(run_quiz(get_world_capitals_dictionary("WorldCapitals.txt")))
 
 #To complete
 def print_banner(username):
-    pass
+    banner_title = f"#  World Capitals Quiz For {username.upper()}  #"
+    print("#" * len(banner_title))
+    print(banner_title)
+    print("#" * len(banner_title))
 
 #To complete
 def get_world_capitals_dictionary(filename):
-    file = open(filename, "r")
-    lists = file.readline().strip()
+    output_stream = open(filename, "r")
+    lists = output_stream.readline().strip()
     result = {}
-    
     while lists != "":
         lists = lists.split(":")
         result[lists[0]] = lists[1]
-        lists = file.readline().strip()
-
+        lists = output_stream.readline().strip()
+    output_stream.close()
     return result
 
 #To complete
 def get_player_answer(target_country, cities):
     print(f"Choices available: {cities}")
-    user_inpu = input(f"Enter the captital city of {target_country} : {cities}")
-    while user_inpu not in cities:
+    print()
+    user_input = input(f"Enter the captital city of {target_country} : {cities}")
+    while user_input not in cities:
         print("You must choose from the city choices available!")
-        user_inpu = input(f"Enter the captital city of {target_country} : {cities}")
-    return user_inpu
+        user_input = input(f"Enter the captital city of {target_country} : {cities}")
+    return user_input
 
 #To complete
 def run_round(world_capitals_dict, countries_tested):
-    world_capitals_dict = get_world_capitals_dictionary("WorldCapitals.txt")
     question_data = get_question_data(world_capitals_dict, countries_tested);
     correct_country = question_data[0]
     city_options = question_data[1]
