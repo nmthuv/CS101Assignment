@@ -6,8 +6,9 @@ def main():
     username = "wxyz001" #use your username
     #To complete
     print_banner(username)
-    world_capitals_dict = get_world_capitals_dictionary("WorldCapitals.txt")
-    print(run_quiz(get_world_capitals_dictionary("WorldCapitals.txt")))
+    world_capitals_dict = get_world_capitals_dictionary(input_filename)
+    overall_score = run_quiz(world_capitals_dict)
+    
 
 #To complete
 def print_banner(username):
@@ -44,16 +45,12 @@ def run_round(world_capitals_dict, countries_tested):
     correct_country = question_data[0]
     city_options = question_data[1]
     correct_city = world_capitals_dict[correct_country]
-
-    print("coorect city", correct_city)
-
+    print("correct city", correct_city)
     score = 3
-
-    
     while score > 0 :
         player_answer = get_player_answer(correct_country, city_options)
         if player_answer == correct_city:
-            print("Yay")
+            print("Your answer is correct! Well done!")
             break
         else:
             if score != 1:
